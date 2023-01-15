@@ -1,0 +1,11 @@
+version: "3"
+services:
+  ca-app:
+    build: .
+    restart: always
+    working_dir: /app
+    volumes:
+      - ./server:/app/server
+    command: poetry run uvicorn server.main:app --port 3000 --host 127.0.0.1 --reload
+    ports:
+      - '3000:3000'

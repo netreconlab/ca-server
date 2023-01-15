@@ -1,0 +1,234 @@
+{% extends "_layout.html" %}
+
+{% block head_content %}
+<style>
+    .shine > ul {
+        padding: 0;
+    }
+    .shine > li:before {
+        content: "\f0c0"; /* FontAwesome Unicode */
+        font-family: "icomoon";
+        display: inline-block;
+        margin-left: -1.3em; /* same as padding-left set on li */
+        width: 1.3em; /* same as padding-left set on li */
+    }
+    .nccf-resource-link {
+        color: white !important;
+    }
+    .nccf-small {
+        font-size: 20px !important;
+    }
+    /*.hover-white:hover{
+        color:white !important;
+    }*/
+    @media (max-width: 768px) {
+        .hero-wrap {
+            padding-top: 40px !important;
+        }
+    }
+    @media (max-height: 650px) and (min-width: 768px) {
+        .fix-menu-interference {
+            padding-top: 75px !important;
+        }
+    }
+    .media-body:hover .hover-white {
+        color: white !important;
+    }
+</style>
+{% endblock %}
+
+{% block main_content %}
+<div class="hero-wrap  js-fullheight" style="background-image: url({{ url_for('static', path='images/nccf_bg_3.jpg') }});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-end"
+             data-scrollax-parent="true">
+            <div class="col-md-8 ftco-animate mb-4 pr-lg-4 fix-menu-interference">
+                <a href="Media.html" class="icon-wrap d-flex align-items-center mt-3">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <span class="ion-ios-play"></span>
+                    </div>
+                    <div class="heading-title ml-3">
+                        <span>Watch the Sunday messages</span>
+                    </div>
+                </a>
+                <h1 style='font-size:36px;bmcustom:true' class="mb-2">Our goal as Christians is this: To be an exact
+                    reflection of Jesus, the Son of God (Romans 8:29)</h1>
+                <ul class="shine"
+                    style=" list-style: None !important; font-size:22px !important; !important;color:white !important;">
+                    <li class="mb-0 mt-0 pb-0" style="color:white !important;">We do this individually by growing in
+                        purity in our personal lives <i>(1 John 3:2-3)</i></li>
+
+                    <li class="mb-2 pb-1" style="color:white !important;">We do this corporately by becoming fully
+                        functioning members of a local Church <i>(Ephesians 4:11-16)</i></li>
+                </ul>
+                <h3 class="subheading mb-1 pb-1"><i>"Let us press onto perfection" - Hebrews 6:1</i></h3>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-12 text-center heading-section heading-section-light ftco-animate">
+                <span class="subheading">Current Message</span>
+                <h2 class="mb-2"><span class="px-4">Sermon Of The Week</span></h2>
+            </div>
+        </div>
+        <div class="row d-flex sermon-wrap">
+            <div class="col-md-6 d-flex align-items-stretch ftco-animate">
+                <div class="img d-flex align-self-stretch align-items-center justify-content-center"
+                     style="background-image: url({{ last_sermon.image }});">
+                    <a href="{{ last_sermon.url  }}" target="_blank"
+                       class="fto-counter icon-video d-flex align-items-center justify-content-center text-center"
+                       style="width: 80px; height: 80px;    background: white;    border-radius: 50px;cursor:pointer">
+                        <span class="ion-ios-play" style="font-size:24px;"></span>
+                    </a>
+
+                </div>
+            </div>
+            <div class="col-md-6 py-4 text ftco-animate">
+                <h2 class="mb-4"><a href="{{ last_sermon.url }}" target="_blank">{{ last_sermon.title }}</a></h2>
+                <div class="meta">
+                    <p>
+                        <span>Speaker: <a href="{{ last_sermon.url }}" target="_blank"
+                                          class="ptr">{{ last_sermon.speaker }}</a></span>
+                        <!--<span>Categories: <a href="#">God</a>, <a href="#">Pray</a></span>-->
+                        {#	  						<span><a href="https://@CURRSERMONURL" target="_blank" >@CURRSERMONDATE</a></span>#}
+                        <span><a href="{{ last_sermon.url }}" target="_blank">{{ last_sermon.date }}</a></span>#}
+                    </p>
+                </div>
+                <!--<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>-->
+                <p class="mt-4 btn-customize">
+                    <a href="Media.html" class="btn btn-primary px-4 py-3 mr-md-2"><span class="icon-play"></span> Media
+                        Page</a> <a href="https://www.youtube.com/user/NCCFChurch" target="_blank"
+                                    class="btn btn-black px-4 py-3 ml-lg-2"><span class="icon-youtube"></span> NCCF On
+                    YouTube</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-lg-6 py-4 py-md-5">
+
+                <div class="d-flex services ftco-animate text-lg-right py-4 px-lg-4">
+                    <div class="icon order-md-last d-flex align-items-center justify-content-center"><span
+                            class="flaticon-bible"></span></div>
+                    <div class="media-body pr-lg-4">
+                        <h3 class="heading mb-3">Weekly Verse</h3>
+                        <p>{{ memory_verse }}</p>
+
+                        <p style="text-align:right"><a class="hover-white"
+                                                       href="https://rlcf.church/memory-verses/plan/2022/"
+                                                       target="_blank">Memory Verses...</a></p>
+                    </div>
+                </div>
+
+                <div class="d-flex services ftco-animate text-lg-right py-4 px-lg-4">
+                    <div class="icon order-md-last d-flex align-items-center justify-content-center"><span
+                            class="icon-quote-right"></span></div>
+                    <div class="media-body pr-lg-4">
+                        <h3 class="heading mb-3">Quote</h3>
+                        <p>{{ cur_quote }}</p>
+                        <p style="text-align:right"><a class="hover-white" href="NCCFQuotes.html">More Quotes...</a></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-6 d-flex align-items-stretch">
+                <div class="img img-about" style="background-image: url({{ url_for('static', path='/images/about.jpg') }});"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section">
+    <div class="container-fluid px-0">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-12 text-center heading-section heading-section-light ftco-animate">
+                <span class="subheading">Our Blogs</span>
+                <h2 class="mb-2"><span class="px-4">Recent Blogs</span></h2>
+            </div>
+        </div>
+
+
+        <section class="ftco-section ftco-no-pt bg-light">
+            <div class="container-fluid px-0">
+                <div class="row no-gutters">
+                {% if recent_blogs %}
+                    {% for blog in recent_blogs %}
+                        <div class="col-md-3 event-wrap event-wrap-full ftco-animate">
+{#    shina                        <div class="img" style="background-image: url({{ blog["image"]["url"] }});"></div>#}
+                            <div class="text">
+                                <h2 class="mb-3" style="min-height:80px"><a href="">{{ blog.title }}</a></h2>
+                                <div class="meta">
+                                    <p>
+                                        <span><i class="icon-calendar mr-2"></i>{{ blog["publishDate"] }}</span>
+                                        <span><i class="icon-person mr-2"></i> <a
+                                                href="{{ blog.url }}">{{ blog.author }}</a></span>
+                                    </p>
+                                </div>
+                                <p style="text-align:right;"><a href="{{ blog.url }}" class="btn btn-primary">Read
+                                    more</a></p>
+                            </div>
+                        </div>
+                    {% endfor %}
+{% endif %}
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+
+<section class="ftco-section bg-light" style="padding: 10px 0 0 0;background:#2d0b0f !important;">
+    <div class="container">
+        <div class="row justify-content-center mb-2 pb-2">
+            <div class="col-md-12 text-center heading-section heading-section-light ftco-animate">
+                <h2 class="ftco-heading-2" style="color:white !important; font-size: 24px;">Resources</h2>
+                <h3 class="mb-2">
+                <span class="px-4">
+                    <a class="nccf-resource-link nccf-small" href='http://www.cfcindia.com'
+                       target="_blank">CFC India</a>
+                </span>
+                    <span class="px-4">
+                    <a class="nccf-resource-link nccf-small" href='http://www.cfcindia.com/books'
+                       target="_blank">Books</a>
+                </span>
+
+                    <span class="px-4">
+                    <a class="nccf-resource-link nccf-small" href='http://www.cfcindia.com/qa'
+                       target="_blank">Q&A</a></span>
+
+                    <span class="px-4">
+                    <a class="nccf-resource-link nccf-small" href='https://rlcf.church/memory-verses/plan/2022/'
+                       target="_blank">Memory Verses</a></span>
+
+                    <span class="px-4">
+                        <a class="nccf-resource-link nccf-small" href='http://www.cfcindia.com/wftw' target="_blank">Weekly Word</a>
+                                                                                                                             </span>
+
+                    <span class="px-4">
+                        <a class="nccf-resource-link nccf-small" href='#links'>External Links (Fellowships)</a>
+                                                                                                                             </span>
+
+                </h3>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script type="text/javascript">
+    runReplacements();
+</script>
+
+{% endblock %}

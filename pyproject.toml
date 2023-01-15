@@ -1,0 +1,28 @@
+[virtualenvs]
+in-project = true
+
+[tool.poetry]
+name = "assuage-ca"
+version = "1.0.0"
+description = ""
+authors = ["shina-m <shina.ct@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.78.0"
+jinja2 = "^3.1.2"
+uvicorn = "^0.18.2"
+python-multipart = "^0.0.5"
+aiofiles = "^0.8.0"
+requests = "^2.28.1"
+fastapi-utils = "^0.2.1"
+python-dotenv = "^0.20.0"
+peewee = "^3.15.1"
+bcrypt = "^3.2.2"
+cryptography = "^37.0.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=1.1"]
+build-backend = "poetry.masonry.api"
