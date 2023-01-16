@@ -1,5 +1,3 @@
-import bcrypt
-import base64
 import urllib.parse
 
 from server import models, schemas
@@ -10,56 +8,27 @@ ROUNDS = 5
 
 ca = CA()
 
-# def create_user(req: schemas.UserCreate):
-#     user = models.User(
-#         username=req.username,
-#         password=bcrypt.hashpw(req.password.encode('utf-8'), bcrypt.gensalt(ROUNDS))
-#     )
-#     user.save(force_insert=True)
-#     print(user)
-#     return user
-#
-# # Use conditions to compare the authenticating password with the stored one:
-# # if bcrypt.checkpw(login.password('utc-8'), User.password):
-# #     print("login success")
-# # else:
-# #     print("incorrect password")
-
-# def get_users():
-#     return list(models.User.select())
-#
-# def get_user(username: str):
-#     return models.User.filter(models.User.username == username).first()
-
-
 def create_app_user(req: schemas.AppUserCreate):
-    print("got here", req.user)
     app_user = models.AppUser(id=req.user)
-    print("got here2", app_user)
     app_user.save(force_insert=True)
-    # print("shina", type(app_user.creator))
     return app_user
+
 
 def get_app_users():
     try:
         return list(models.AppUser.select())
-        # return []
     except Exception as e:
         print(e, "An exception occurred when getting app users")
         return []
 
-    # return [app_user for app_user in models.AppUser.select().dicts()]
 
 def get_app_user(user: str):
     return models.AppUser.filter(models.AppUser.id == user).first()
 
+
 def delete_app_user(user:str):
     n = models.AppUser.delete().where(models.AppUser.user == user).execute()
     return n
-
-
-# CA_KEY_FILE = os.path.join(settings.ROOT_CRT_PATH, 'rootCA.key')
-# CA_CERT_FILE = os.path.join(settings.ROOT_CRT_PATH, 'rootCA.crt')
 
 
 def sanitize_cert(cert: bytes) -> str:
@@ -100,6 +69,7 @@ def create_certificate(req: schemas.CertificateCreate):
     certificate.save()
     return certificate
 
+
 def update_certificate(req:schemas.CertificateUpdate):
     certificate = get_certificate(req.installationId)
     if certificate is None:
@@ -129,33 +99,3 @@ def get_ca_certificate():
     cert = ca.ca_cert.public_bytes(serialization.Encoding.PEM)
     print("ca_cert", cert)
     return sanitize_cert(cert)
-
-
-# //Create certificate from string
-# function createCSRFromString(csrString){
-#   var head = '-----BEGIN CERTIFICATE REQUEST-----\n';
-#   var foot = '-----END CERTIFICATE REQUEST-----\n';
-#   var isMultiple = false;
-#   var newCSRString = head;
-#
-#   //Check if string size is a multiple of 64
-#   if (csrString.length%64 == 0){
-#     isMultiple = true;
-#   }
-#
-#   for (i=1; i <= csrString.length; i++){
-#     newCSRString += csrString[i-1];
-#
-#     if ((i != 1) && (i%64 == 0)){
-#       newCSRString += '\n';
-#     }
-#
-#     if ((i == csrString.length) && !isMultiple){
-#       newCSRString += '\n';
-#     }
-#   }
-#
-#   newCSRString += foot;
-#
-#   return newCSRString;
-# }

@@ -110,17 +110,6 @@ class CA:
         # return DER certificate
         return cert.public_bytes(serialization.Encoding.PEM)
 
-
-
-# generate_private_key()
-# print(load_private_key().private_bytes(
-#             encoding=serialization.Encoding.PEM,
-#             format=serialization.PrivateFormat.TraditionalOpenSSL,
-#             encryption_algorithm=serialization.NoEncryption(),
-#         ))
-# generate_root_cert(load_private_key())
-# print(load_root_cert())
-
 def get_test_csr():
     # Now we want to generate a cert from that root
     cert_key = rsa.generate_private_key(
@@ -147,12 +136,3 @@ def get_test_csr():
      ).sign(cert_key, hashes.SHA256())
 
     return  csr.public_bytes(serialization.Encoding.PEM)
-
-
-
-# ca = CA()
-# csr = get_test_csr()
-# cert = ca.sign_certificate_request(csr_bytes=csr, validityIndays=60)
-# print(csr)
-# print("***********")
-# print(cert.decode("ascii"))

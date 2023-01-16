@@ -1,8 +1,5 @@
-import time
 from typing import List
-
 from fastapi import Depends, FastAPI, HTTPException, APIRouter
-
 from . import crud, database, models, schemas
 from .database import db_state_default
 
@@ -27,23 +24,6 @@ def get_db(db_state=Depends(reset_db_state)):
     finally:
         if not database.db.is_closed():
             database.db.close()
-
-
-# user_router = APIRouter(prefix="/api/users")
-#
-# @user_router.post("/", response_model=schemas.User, dependencies=[Depends(get_db)])
-# def create_user(req: schemas.UserCreate):
-#     db_user = crud.get_user(username=req.username)
-#     if db_user:
-#         raise HTTPException(status_code=400, detail="App User already registered")
-#     return crud.create_user(req=req)
-#
-#
-# @user_router.get("/", response_model=List[schemas.User], dependencies=[Depends(get_db)])
-# def read_users():
-#     users = crud.get_users()
-#     return users
-
 
 app_user_router = APIRouter(prefix="/api/appusers")
 
@@ -143,6 +123,9 @@ def delete_certificate(installationId: str):
 def get_ca_certificate():
     return crud.get_ca_certificate()
 
-# app.include_router(user_router)
+@app.get("/", response_model=str)
+def get_ca_certificate():
+    return 'Server is Running...'
+
 app.include_router(app_user_router)
 app.include_router(cert_router)

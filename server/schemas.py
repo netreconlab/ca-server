@@ -11,31 +11,11 @@ class PeeweeGetterDict(GetterDict):
             return list(res)
         return res
 
-# class UserCreate(BaseModel):
-#     username: str
-#     password: str
-#
-# class User(BaseModel):
-#     id :str
-#     username: str
-#     created_at: datetime
-#     updated_at: datetime
-#
-#
-#     class Config:
-#         orm_mode = True
-#         getter_dict = PeeweeGetterDict
-#
-
-
 class AppUserCreate(BaseModel):
     user: str
-    # authenticatedUserId: str
 
 class AppUser(BaseModel):
     id: str
-    # user: str
-    # creator: User
     created_at: datetime
     updated_at: datetime
 
@@ -58,7 +38,6 @@ class Certificate(BaseModel):
     installation_id: str
     csr: str
     certificate: str
-    # creator: User
     user_id: str
     created_at: datetime
     updated_at: datetime
