@@ -1,3 +1,7 @@
+.idea/
+*.pyc
+*.venv/
+.DS_Store
 tmp
 docker-compose.yml
 *.md
