@@ -3,8 +3,9 @@
 from contextvars import ContextVar
 
 import peewee
+import os
 
-DATABASE_NAME = "server/appdb.sqlite"
+DATABASE_NAME = os.getenv('DATABASE_NAME')
 db_state_default = {"closed": None, "conn": None, "ctx": None, "transactions": None}
 db_state = ContextVar("db_state", default=db_state_default.copy())
 

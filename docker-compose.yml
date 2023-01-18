@@ -2,10 +2,14 @@ version: "3"
 services:
   ca-app:
     build: .
+    environment:
+      - DATABASE_NAME=server/dbs/appdb.sqlite
+      - RSA_PRIVATE_KEY=./server/ca/private/cakey.pem
+      - ROOT_CA_CERT=./server/ca/private/cacert.der
+      - ROUNDS=5
     restart: always
-    working_dir: /app
     volumes:
-      - ./server:/app/server
-    command: poetry run uvicorn server.main:app --host 0.0.0.0 --port 3000
+      - ./server/ca:/app/server/ca
+      - ./server/dbs:/app/server/dbs
     ports:
       - '3000:3000'
