@@ -15,6 +15,7 @@ Dockerfile.heroku
 *.pem
 *.der
 *.csr
+*.sqlite
 server/ca/**/*
 server/dbs/**/*
 
