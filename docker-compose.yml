@@ -1,6 +1,6 @@
 version: "3"
 services:
-  ca-app:
+  ca-server:
     image: netreconlab/ca-server:latest
     environment:
       - CA_SERVER_PRIVATE_KEY_FILE=./server/ca/private/cakey.pem # (Required) Location and name of private key
@@ -10,6 +10,8 @@ services:
       - CA_SERVER_ROUTE_USER_PREFIX=/appusers # The prefix to add to all user related routes
       - CA_SERVER_ROUTE_CERTIFICATE_PREFIX=/certificates # The prefix to add to all certificate related routes
       - CA_SERVER_ROUNDS=5 # Number of rounds
+    # Uncomment the command below if you are running behind a proxy. Change "/ca" to your respective endpoint.
+    # command: [ "./start-poetry.sh", "poetry", "run", "uvicorn", "server.main:app", "--host", "0.0.0.0", "--port", "3000", "--root-path", "/ca" ]
     restart: always
     volumes:
       - ./server/ca:/app/server/ca
