@@ -2,6 +2,10 @@ from typing import List
 from fastapi import Depends, FastAPI, HTTPException, APIRouter
 from . import crud, database, models, schemas
 from .database import db_state_default
+import os
+
+ROUTE_USER_PREFIX = os.getenv('CA_SERVER_ROUTE_USER_PREFIX', "/appusers")
+ROUTE_CERTIFICATE_PREFIX = os.getenv('CA_SERVER_ROUTE_CERTIFICATE_PREFIX', "/certificates")
 
 database.db.connect()
 database.db.create_tables(models.MODELS)
@@ -25,7 +29,7 @@ def get_db(db_state=Depends(reset_db_state)):
         if not database.db.is_closed():
             database.db.close()
 
-app_user_router = APIRouter(prefix="/api/appusers")
+app_user_router = APIRouter(prefix=ROUTE_USER_PREFIX)
 
 @app_user_router.post("/", response_model=schemas.AppUser, dependencies=[Depends(get_db)])
 def create_app_user(req: schemas.AppUserCreate):
@@ -58,7 +62,7 @@ def delete_app_user(user: str):
 
 
 # Certificates
-cert_router = APIRouter(prefix="/api/certificates")
+cert_router = APIRouter(prefix=ROUTE_CERTIFICATE_PREFIX)
 @cert_router.post("/", response_model=schemas.Certificate, dependencies=[Depends(get_db)])
 def create_certificate(req: schemas.CertificateCreate):
     if req.user == None:
@@ -117,13 +121,17 @@ def delete_certificate(installationId: str):
         raise HTTPException(status_code=404, detail="Couldn't delete Certificiate")
     return n
 
-@app.get("/api/ca_certificate", response_model=str)
+@app.get("/ca_certificate", response_model=str)
 def get_ca_certificate():
     return crud.get_ca_certificate()
 
 @app.get("/", response_model=str)
 def get_ca_certificate():
     return 'Server is Running...'
+
+@app.get("/health")
+def health():
+    return "Healthy: OK"
 
 app.include_router(app_user_router)
 app.include_router(cert_router)
