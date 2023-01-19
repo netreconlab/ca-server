@@ -46,8 +46,6 @@ def read_app_user(user: str):
     db_user = crud.get_app_user(user=user)
     if db_user is None:
         raise HTTPException(status_code=404, detail="App User not found")
-
-    print("shina", db_user)
     return db_user
 
 
