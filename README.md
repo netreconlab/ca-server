@@ -2,7 +2,7 @@
 [![](https://dockeri.co/image/netreconlab/ca-server)](https://hub.docker.com/r/netreconlab/ca-server)
 [![Docker](https://github.com/netreconlab/ca-server/actions/workflows/build.yml/badge.svg)](https://github.com/netreconlab/ca-server/actions/workflows/build.yml)
 [![Docker](https://github.com/netreconlab/ca-server/actions/workflows/release.yml/badge.svg)](https://github.com/netreconlab/ca-server/actions/workflows/release.yml)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)][license-link]
+![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
 
 ---
 Quickly create Certificate Authorities (CAs) for your applications.
