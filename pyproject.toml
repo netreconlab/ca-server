@@ -2,9 +2,9 @@
 in-project = true
 
 [tool.poetry]
-name = "assuage-ca"
-version = "1.0.0"
-description = ""
+name = "ca-server"
+version = "0.0.1"
+description = "Quickly create Certificate Authorities (CAs) for your applications."
 authors = ["shina-m <shina.ct@gmail.com>"]
 
 [tool.poetry.dependencies]
