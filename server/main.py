@@ -126,11 +126,11 @@ def get_ca_certificate():
     return crud.get_ca_certificate()
 
 @app.get("/", response_model=str)
-def get_ca_certificate():
+def get_home_page():
     return 'Server is Running...'
 
 @app.get("/health")
-def health():
+def get_server_health():
     return "Healthy: OK"
 
 app.include_router(app_user_router)
