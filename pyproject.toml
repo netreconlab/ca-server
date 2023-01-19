@@ -19,7 +19,7 @@ fastapi-utils = "^0.2.1"
 python-dotenv = "^0.21.0"
 peewee = "^3.15.4"
 bcrypt = "^3.2.2"
-cryptography = "^37.0.4"
+cryptography = "^39.0.0"
 
 [tool.poetry.dev-dependencies]
 
