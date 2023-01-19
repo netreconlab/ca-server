@@ -13,7 +13,7 @@ Multiple images are automatically built for your convenience. Images can be foun
 - [Singularity - Hosted on GitHub Container Registry](https://github.com/netreconlab/hipaa-postgres/pkgs/container/ca-server)
 
 ## Environment Variables
-Below is a list of environment variables available to configure `ca-server`. It is required to mount the folder containing `CA_SERVER_PRIVATE_KEY_FILE` and `CA_SERVER_ROOT_CA_CERT`. It is recommended to mount the folder containing `CA_SERVER_DATABASE_NAME` to persist your database during restarts. It is also recommended to mount the folder containing `CA_SERVER_CA_DIRECTORY` to persist any files created by `ca-server`.
+Below is a list of environment variables available to configure `ca-server`. It is required to mount the folder containing `CA_SERVER_PRIVATE_KEY_FILE` and `CA_SERVER_ROOT_CA_CERT`. It is recommended to mount the folder containing `CA_SERVER_DATABASE_NAME` to persist your database during restarts. See https://rajanmaharjan.medium.com/secure-your-mongodb-connections-ssl-tls-92e2addb3c89 to learn how to create a private key and root certificate. It is also recommended to mount the folder containing `CA_SERVER_CA_DIRECTORY` to persist any files created by `ca-server`.
 
 ```bash
 CA_SERVER_PRIVATE_KEY_FILE=./server/ca/private/cakey.pem # (Required) Location and name of private key 
