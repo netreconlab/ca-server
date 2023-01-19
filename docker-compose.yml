@@ -1,7 +1,7 @@
 version: "3"
 services:
   ca-app:
-    build: .
+    image: netreconlab/ca-server:0.0.1
     environment:
       - DATABASE_NAME=server/dbs/appdb.sqlite
       - RSA_PRIVATE_KEY=./server/ca/private/cakey.pem
