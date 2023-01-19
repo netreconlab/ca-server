@@ -3,8 +3,9 @@ import urllib.parse
 from server import models, schemas
 from server.cert import CA
 from cryptography.hazmat.primitives import serialization
+import os
 
-ROUNDS = 5
+ROUNDS = os.getenv('ROUNDS')
 
 ca = CA()
 
