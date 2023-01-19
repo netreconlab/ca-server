@@ -9,8 +9,8 @@ from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 import os
 
-RSA_PRIVATE_KEY = os.getenv('RSA_PRIVATE_KEY')
-ROOT_CA_CERT = os.getenv('ROOT_CA_CERT')
+RSA_PRIVATE_KEY = os.getenv('CA_SERVER_PRIVATE_KEY_FILE')
+ROOT_CA_CERT = os.getenv('CA_SERVER_ROOT_CA_CERT')
 
 class CA:
     def __init__(self):

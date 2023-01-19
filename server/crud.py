@@ -5,7 +5,8 @@ from server.cert import CA
 from cryptography.hazmat.primitives import serialization
 import os
 
-ROUNDS = os.getenv('ROUNDS')
+CA_DIRECTORY = os.getenv('CA_SERVER_CA_DIRECTORY', "./server/ca")
+ROUNDS = os.getenv('CA_SERVER_ROUNDS', 5)
 
 ca = CA()
 
@@ -52,8 +53,7 @@ def generate_cert(installationId: str, csr: str, validityIndays: int):
     signed_cert = ca.sign_certificate_request(csr_bytes=csr_b64bytes, validityIndays=validityIndays)
     # maybe create csr from string
     # convert signed_cert to string
-    ca_dir = "server/ca"
-    csr_dir = f"{ca_dir}/csrs/{installationId}.csr"
+    csr_dir = f"{CA_DIRECTORY}/csrs/{installationId}.csr"
     with open(csr_dir, "w") as text_file:
         text_file.write(csr)
 
