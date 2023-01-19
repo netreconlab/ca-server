@@ -1,4 +1,4 @@
-FROM python:3.10.5-slim AS build
+FROM python:3.10-slim AS build
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ RUN apt-get update \
       && python3 -m pip install poetry \
       && poetry install
       
-FROM python:3.10.5-slim AS release
+FROM python:3.10-slim AS release
 
 WORKDIR /app
 COPY --from=build /app/venv ./venv
