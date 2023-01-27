@@ -26,16 +26,16 @@ class AppUser(BaseModel):
 
 
 class CertificateCreate(BaseModel):
-    installationId: str
+    certificateId: str
     csr: str
     user: str
 
 class CertificateUpdate(BaseModel):
-    installationId: str
+    certificateId: str
     csr: str
 
 class Certificate(BaseModel):
-    installation_id: str
+    certificate_id: str
     csr: str
     certificate: str
     user_id: str

@@ -42,7 +42,7 @@ def sanitize_cert(cert: bytes) -> str:
     return urllib.parse.quote_plus(cleaned_signed_cert, safe='*')
 
 
-def generate_cert(installationId: str, csr: str, validityIndays: int):
+def generate_cert(certificateId: str, csr: str, validityIndays: int):
     # De-url the string
     csr_url_dec = urllib.parse.unquote_plus(csr)
     # put in pem format
@@ -53,7 +53,7 @@ def generate_cert(installationId: str, csr: str, validityIndays: int):
     signed_cert = ca.sign_certificate_request(csr_bytes=csr_b64bytes, validityIndays=validityIndays)
     # maybe create csr from string
     # convert signed_cert to string
-    csr_dir = f"{CA_DIRECTORY}/csrs/{installationId}.csr"
+    csr_dir = f"{CA_DIRECTORY}/csrs/{certificateId}.csr"
     with open(csr_dir, "w") as text_file:
         text_file.write(csr)
 
@@ -62,22 +62,22 @@ def generate_cert(installationId: str, csr: str, validityIndays: int):
 
 def create_certificate(req: schemas.CertificateCreate):
     certificate =  models.Certificate(
-        installation_id=req.installationId,
+        certificate_id=req.certificateId,
         user=req.user,
         csr = req.csr,
-        certificate = generate_cert(req.installationId, req.csr, validityIndays=365)
+        certificate = generate_cert(req.certificateId, req.csr, validityIndays=365)
     )
     certificate.save()
     return certificate
 
 
 def update_certificate(req:schemas.CertificateUpdate):
-    certificate = get_certificate(req.installationId)
+    certificate = get_certificate(req.certificateId)
     if certificate is None:
         return
 
     certificate.csr = req.csr
-    certificate.certificate=generate_cert(req.installationId, req.csr, validityIndays=365)
+    certificate.certificate=generate_cert(req.certificateId, req.csr, validityIndays=365)
     certificate.save()
 
     return certificate
@@ -87,12 +87,12 @@ def get_certificates():
     return list(models.Certificate.select())
 
 
-def get_certificate(installation_id: str):
-    return models.Certificate.filter(models.Certificate.installation_id == installation_id).first()
+def get_certificate(certificate_id: str):
+    return models.Certificate.filter(models.Certificate.certificate_id == certificate_id).first()
 
 
-def delete_certificate(installation_id: str):
-    n = models.Certificate.delete().where(models.Certificate.installation_id == installation_id).execute()
+def delete_certificate(certificate_id: str):
+    n = models.Certificate.delete().where(models.Certificate.certificate_id == certificate_id).execute()
     return n
 
 
