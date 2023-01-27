@@ -8,6 +8,7 @@ services:
       - CA_SERVER_DATABASE_NAME=server/dbs/appdb.sqlite # (Required) Location and name of the database
       - CA_SERVER_CA_DIRECTORY=./server/ca # Location to store CA related files
       - CA_SERVER_ROUTE_USER_PREFIX=/appusers # The prefix to add to all user related routes
+      - CA_SERVER_ROUTE_ROOT_CERTIFICATE_PREFIX=/ca_certificate # The prefix to add root certificate related routes
       - CA_SERVER_ROUTE_CERTIFICATE_PREFIX=/certificates # The prefix to add to all certificate related routes
       - CA_SERVER_ROUNDS=5 # Number of rounds
     # Uncomment the command below if you are running behind a proxy. Change "/ca" to your respective endpoint.
