@@ -5,6 +5,7 @@ from .database import db_state_default
 import os
 
 ROUTE_USER_PREFIX = os.getenv('CA_SERVER_ROUTE_USER_PREFIX', "/appusers")
+ROUTE_ROOT_CERTIFICATE_PREFIX = os.getenv('CA_SERVER_ROOT_CERTIFICATE_PREFIX', "/ca_certificate")
 ROUTE_CERTIFICATE_PREFIX = os.getenv('CA_SERVER_ROUTE_CERTIFICATE_PREFIX', "/certificates")
 
 database.db.connect()
@@ -121,7 +122,7 @@ def delete_certificate(certificateId: str):
         raise HTTPException(status_code=404, detail="Couldn't delete Certificiate")
     return n
 
-@app.get("/ca_certificate", response_model=str)
+@app.get("{ROUTE_ROOT_CERTIFICATE_PREFIX}", response_model=str)
 def get_ca_certificate():
     return crud.get_ca_certificate()
 
