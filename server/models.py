@@ -18,7 +18,7 @@ class AppUser(BaseModel):
     id = CharField(primary_key=True)
 
 class Certificate(BaseModel):
-    installation_id = CharField(column_name='installation_id', null=True)
+    certificate_id = CharField(column_name='certificate_id', null=True)
     csr = CharField(null=True)
     certificate = CharField(null=True)
     user = ForeignKeyField(field='id', model=AppUser, backref="certificates")

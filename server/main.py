@@ -5,6 +5,7 @@ from .database import db_state_default
 import os
 
 ROUTE_USER_PREFIX = os.getenv('CA_SERVER_ROUTE_USER_PREFIX', "/appusers")
+ROUTE_ROOT_CERTIFICATE_PREFIX = os.getenv('CA_SERVER_ROOT_CERTIFICATE_PREFIX', "/ca_certificate")
 ROUTE_CERTIFICATE_PREFIX = os.getenv('CA_SERVER_ROUTE_CERTIFICATE_PREFIX', "/certificates")
 
 database.db.connect()
@@ -69,14 +70,14 @@ def create_certificate(req: schemas.CertificateCreate):
         raise HTTPException(status_code=400, detail="user not supplied")
     elif crud.get_app_user(user=req.user) is None:
         raise HTTPException(status_code=404, detail="App User not found")
-    elif req.installationId == '1':
-        raise HTTPException(status_code=500, detail= "Cannot post a certificate with this installationId")
-    elif req.installationId == None:
-        raise HTTPException(status_code=500, detail="installationId not supplied")
+    elif req.certificateId == '1':
+        raise HTTPException(status_code=500, detail= "Cannot post a certificate with this certificateId")
+    elif req.certificateId == None:
+        raise HTTPException(status_code=500, detail="certificateId not supplied")
     elif req.csr == None:
         raise HTTPException(status_code=500, detail="csr not supplied")
 
-    cert = crud.get_certificate(req.installationId)
+    cert = crud.get_certificate(req.certificateId)
     if cert:
         raise HTTPException(status_code=400, detail="InstallationId already registered")
     return crud.create_certificate(req)
@@ -86,9 +87,9 @@ def get_certificates():
     certs = crud.get_certificates()
     return certs
 
-@cert_router.get("/{installationId}", response_model=schemas.Certificate, dependencies=[Depends(get_db)])
-def get_certificate(installationId: str):
-    cert = crud.get_certificate(installation_id=installationId)
+@cert_router.get("/{certificateId}", response_model=schemas.Certificate, dependencies=[Depends(get_db)])
+def get_certificate(certificateId: str):
+    cert = crud.get_certificate(certificate_id=certificateId)
     if cert is None:
         raise HTTPException(status_code=404, detail="Certificate not found")
     return cert
@@ -96,10 +97,10 @@ def get_certificate(installationId: str):
 
 @cert_router.put("/", response_model=schemas.Certificate, dependencies=[Depends(get_db)])
 def update_certificate(req: schemas.CertificateUpdate):
-    if req.installationId == '1':
-        raise HTTPException(status_code=500, detail= "Cannot post a certificate with this installationId")
-    elif req.installationId == None:
-        raise HTTPException(status_code=500, detail="installationId not supplied")
+    if req.certificateId == '1':
+        raise HTTPException(status_code=500, detail= "Cannot post a certificate with this certificateId")
+    elif req.certificateId == None:
+        raise HTTPException(status_code=500, detail="certificateId not supplied")
     elif req.csr == None:
         raise HTTPException(status_code=500, detail="csr not supplied")
 
@@ -109,19 +110,19 @@ def update_certificate(req: schemas.CertificateUpdate):
 
     return cert
 
-@cert_router.delete("/{installationId}", response_model=int, dependencies=[Depends(get_db)])
-def delete_certificate(installationId: str):
-    if installationId == '1':
-        raise HTTPException(status_code=500, detail="Cannot post a certificate with this installationId")
-    elif installationId == None:
-        raise HTTPException(status_code=500, detail="installationId not supplied")
+@cert_router.delete("/{certificateId}", response_model=int, dependencies=[Depends(get_db)])
+def delete_certificate(certificateId: str):
+    if certificateId == '1':
+        raise HTTPException(status_code=500, detail="Cannot post a certificate with this certificateId")
+    elif certificateId == None:
+        raise HTTPException(status_code=500, detail="certificateId not supplied")
 
-    n = crud.delete_certificate(installation_id = installationId)
+    n = crud.delete_certificate(certificate_id = certificateId)
     if n is None:
         raise HTTPException(status_code=404, detail="Couldn't delete Certificiate")
     return n
 
-@app.get("/ca_certificate", response_model=str)
+@app.get("{ROUTE_ROOT_CERTIFICATE_PREFIX}", response_model=str)
 def get_ca_certificate():
     return crud.get_ca_certificate()
 
