@@ -7,6 +7,13 @@
 ---
 Quickly create Certificate Authorities (CAs) for your applications.
 
+## Software Designed for `ca-server`
+- [ParseCertificateAuthority](https://github.com/netreconlab/ParseCertificateAuthority) - Send CSR's and retreive certificates to/from `ca-server` from [Parse-Swift](https://github.com/netreconlab/Parse-Swift) based clients and servers
+- [CertificateSigningRequest](https://github.com/cbaker6/CertificateSigningRequest) - Generate CSR's on Swift clients and servers that can later be signed by `ca-server`
+- [Parse-Swift](https://github.com/netreconlab/Parse-Swift) - Write Parse client apps in Swift. When coupled with - [ParseCertificateAuthority](https://github.com/netreconlab/ParseCertificateAuthority) and - [CertificateSigningRequest](https://github.com/cbaker6/CertificateSigningRequest), provides the complete client-side stack for generating CSR's, sending/receiving certificates to/from `ca-server`
+- [ParseServerSwift](https://github.com/netreconlab/parse-server-swift) - Write Parse Server Cloud Code apps in Swift. When coupled with - [ParseCertificateAuthority](https://github.com/netreconlab/ParseCertificateAuthority), [CertificateSigningRequest](https://github.com/cbaker6/CertificateSigningRequest), and Parse-Swift](https://github.com/netreconlab/Parse-Swift) provides the complete server-side stack for generating CSR's, sending/receiving certificates to/from `ca-server`
+
+
 ## Images
 Multiple images are automatically built for your convenience. Images can be found at the following locations:
 - [Docker - Hosted on Docker Hub](https://hub.docker.com/r/netreconlab/ca-server)
@@ -20,6 +27,7 @@ CA_SERVER_PRIVATE_KEY_FILE=./server/ca/private/cakey.pem # (Required) Location a
 CA_SERVER_ROOT_CA_CERT=./server/ca/private/cacert.der # (Required) Location and name of CA certificate
 CA_SERVER_DATABASE_NAME=./server/dbs/appdb.sqlite # (Required) Location and name of the database
 CA_SERVER_CA_DIRECTORY=./server/ca # Location to store CA related files
+CA_SERVER_ROUTE_ROOT_CERTIFICATE_PREFIX=/ca_certificate # The prefic to add root certificate related routes
 CA_SERVER_ROUTE_USER_PREFIX=/appusers # The prefix to add to all user related routes
 CA_SERVER_ROUTE_CERTIFICATE_PREFIX=/certificates # The prefix to add to all certificate related routes
 CA_SERVER_ROUNDS=5 # Number of rounds
