@@ -34,6 +34,8 @@ CA_SERVER_ROUNDS=5 # Number of rounds
 ```
 
 ## Local Deployment
+![image](https://user-images.githubusercontent.com/8621344/215227812-3dc126d6-ecf6-4b6d-b349-c4154f14b4d1.png)
+
 ### Option 1
 Use the docker-compose.yml file to run on a docker container or
 1. Fork this repo
