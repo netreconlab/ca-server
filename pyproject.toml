@@ -20,6 +20,7 @@ python-dotenv = "^0.21.1"
 peewee = "^3.15.4"
 bcrypt = "^4.0.1"
 cryptography = "^39.0.1"
+greenlet = "^2.0.2"
 
 [tool.poetry.dev-dependencies]
 
