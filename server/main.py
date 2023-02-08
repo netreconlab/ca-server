@@ -122,7 +122,7 @@ def delete_certificate(certificateId: str):
         raise HTTPException(status_code=404, detail="Couldn't delete Certificiate")
     return n
 
-@app.get("{ROUTE_ROOT_CERTIFICATE_PREFIX}", response_model=str)
+@app.get(ROUTE_ROOT_CERTIFICATE_PREFIX, response_model=str)
 def get_ca_certificate():
     return crud.get_ca_certificate()
 
