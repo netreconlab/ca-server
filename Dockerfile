@@ -1,4 +1,4 @@
-FROM python:3.11-slim AS build
+FROM python:3.12-slim AS build
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ RUN apt-get update \
  && python3 -m pip install poetry \
  && poetry install
  
-FROM python:3.11-slim AS release
+FROM python:3.12-slim AS release
 
 RUN groupadd -g 999 python \
  && useradd -r -u 999 -g python python \
