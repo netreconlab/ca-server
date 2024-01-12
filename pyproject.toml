@@ -9,15 +9,15 @@ authors = ["shina-m <shina.ct@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "^0.103.2"
+fastapi = "^0.104.1"
 jinja2 = "^3.1.2"
-uvicorn = "^0.23.2"
+uvicorn = "^0.25.0"
 python-multipart = "^0.0.6"
 aiofiles = "^23.2.1"
 requests = "^2.31.0"
 fastapi-utils = "^0.2.1"
 python-dotenv = "^1.0.0"
-peewee = "^3.16.3"
+peewee = "^3.17.0"
 bcrypt = "^4.0.1"
 cryptography = "^41.0.4"
 greenlet = "^2.0.2"
