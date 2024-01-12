@@ -10,7 +10,7 @@ authors = ["shina-m <shina.ct@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = "^0.104.1"
-jinja2 = "^3.1.2"
+jinja2 = "^3.1.3"
 uvicorn = "^0.25.0"
 python-multipart = "^0.0.6"
 aiofiles = "^23.2.1"
