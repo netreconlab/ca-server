@@ -18,7 +18,7 @@ requests = "^2.31.0"
 fastapi-utils = "^0.2.1"
 python-dotenv = "^1.0.0"
 peewee = "^3.17.0"
-bcrypt = "^4.0.1"
+bcrypt = "^4.1.2"
 cryptography = "^41.0.7"
 greenlet = "^3.0.3"
 
