@@ -3,7 +3,7 @@ in-project = true
 
 [tool.poetry]
 name = "ca-server"
-version = "0.3.0"
+version = "0.3.1"
 description = "Quickly create Certificate Authorities (CAs) for your applications."
 authors = ["shina-m <shina.ct@gmail.com>"]
 
