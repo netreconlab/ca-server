@@ -29,7 +29,7 @@ def get_app_user(user: str):
 
 
 def delete_app_user(user:str):
-    n = models.AppUser.delete().where(models.AppUser.user == user).execute()
+    n = models.AppUser.delete().where(models.AppUser.id == user).execute()
     return n
 
 
