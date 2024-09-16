@@ -7,7 +7,7 @@ COPY ./poetry*.lock ./
 
 RUN apt-get update \
  && apt-get upgrade -y --no-install-recommends \
- && apt-get install gcc python3-dev \
+ && apt-get install -y --no-install-recommends gcc python3-dev \
  && python3 -m venv /app/venv \
  && . /app/venv/bin/activate \
  && python3 -m pip install poetry \
