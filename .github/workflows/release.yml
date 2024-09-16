@@ -4,10 +4,10 @@ on:
   schedule:
     - cron: '19 4 * * *'
   push:
-    branches: [ main, '0.0.1', '0.3.2' ]
+    branches: [ main, '0.0.1', '0.3.3' ]
 
 env:
-  LATEST: '0.3.2'
+  LATEST: '0.3.3'
   REGISTRY: docker.io
   IMAGE_NAME: ${{ github.repository }}
 
