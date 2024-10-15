@@ -21,7 +21,7 @@ class AppUser(BaseModel):
 
 
     class Config:
-        orm_mode = True
+        from_attributes = True
         getter_dict = PeeweeGetterDict
 
 
@@ -44,5 +44,5 @@ class Certificate(BaseModel):
 
 
     class Config:
-        orm_mode = True
+        from_attributes = True
         getter_dict = PeeweeGetterDict
