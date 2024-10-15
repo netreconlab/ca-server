@@ -2,6 +2,7 @@ from typing import Any, List, Union
 from datetime import datetime
 import peewee
 from pydantic import BaseModel
+from pydantic.utils import GetterDict
 
 class PeeweeGetterDict(GetterDict):
     def get(self, key: Any, default: Any = None):
