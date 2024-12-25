@@ -6,6 +6,7 @@ name = "ca-server"
 version = "0.3.8"
 description = "Quickly create Certificate Authorities (CAs) for your applications."
 authors = ["shina-m <shina.ct@gmail.com>"]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
