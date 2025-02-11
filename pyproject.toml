@@ -3,7 +3,7 @@ in-project = true
 
 [tool.poetry]
 name = "ca-server"
-version = "0.3.8"
+version = "0.3.11"
 description = "Quickly create Certificate Authorities (CAs) for your applications."
 authors = ["shina-m <shina.ct@gmail.com>"]
 package-mode = false
@@ -23,8 +23,9 @@ bcrypt = "^4.2.1"
 cryptography = "^44.0.1"
 greenlet = "^3.1.1"
 pydantic = "^2.10.6"
+certifi = "2025.1.31"
 
-[tool.poetry.dev-dependencies]
+[tool.group.dev.dependencies]
 
 [build-system]
 requires = ["poetry>=1.1"]
