@@ -21,7 +21,7 @@ python-dotenv = "^1.1.0"
 peewee = "^3.17.9"
 bcrypt = "^4.3.0"
 cryptography = "^44.0.2"
-greenlet = "^3.2.0"
+greenlet = "^3.2.1"
 pydantic = "^2.11.3"
 certifi = "2025.1.31"
 
