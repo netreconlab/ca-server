@@ -26,10 +26,10 @@ Below is a list of environment variables available to configure `ca-server`. It 
 CA_SERVER_PRIVATE_KEY_FILE=./server/ca/private/cakey.pem # (Required) Location and name of private key 
 CA_SERVER_ROOT_CA_CERT=./server/ca/private/cacert.der # (Required) Location and name of CA certificate
 CA_SERVER_DATABASE_NAME=./server/dbs/appdb.sqlite # (Required) Location and name of the database
-CA_SERVER_CA_DIRECTORY=./server/ca # Location to store CA related files
-CA_SERVER_ROUTE_ROOT_CERTIFICATE_PREFIX=/ca_certificate # The prefix to add root certificate related routes
-CA_SERVER_ROUTE_USER_PREFIX=/appusers # The prefix to add to all user related routes
-CA_SERVER_ROUTE_CERTIFICATE_PREFIX=/certificates # The prefix to add to all certificate related routes
+CA_SERVER_CA_DIRECTORY=./server/ca # Location to store CA-related files
+CA_SERVER_ROUTE_ROOT_CERTIFICATE_PREFIX=/ca_certificate # The prefix to add root certificate-related routes
+CA_SERVER_ROUTE_USER_PREFIX=/appusers # The prefix to add to all user-related routes
+CA_SERVER_ROUTE_CERTIFICATE_PREFIX=/certificates # The prefix to add to all certificate-related routes
 CA_SERVER_ROUNDS=5 # Number of rounds
 ```
 
@@ -37,35 +37,35 @@ CA_SERVER_ROUNDS=5 # Number of rounds
 ![image](https://user-images.githubusercontent.com/8621344/215227812-3dc126d6-ecf6-4b6d-b349-c4154f14b4d1.png)
 
 ### Option 1
-Use the docker-compose.yml file to run on a docker container or
+Use the docker-compose.yml file to run on a Docker container or
 1. Fork this repo
-2. In terminal, run `docker-compose up`
-3. Then Go to `http://localhost:3000/docs` to view api docs and use as needed
+2. In the terminal, run `docker-compose up`
+3. Then go to `http://localhost:3000/docs` to view API docs and use as needed
 
 ### Option 2
 Run directly on your local machine by:
 1. Fork this repo
-2. Install python 3.10.x and poetry
+2. Install Python 3.x and poetry
 3. Running `poetry install in the root directory`
 4. Run `poetry run uvicorn server.main:app --host 0.0.0.0 --port 3000`
-5. Then Go to `http://localhost:3000/docs` to view api docs and use as needed
+5. Then go to `http://localhost:3000/docs` to view API docs and use as needed
 
 ## Running behind a proxy
-If you need to run `ca-server` behind a proxy, `--root-path` needs to be added to command to start `ca-server` in the `docker-compose.yml` file. The root path should match the exact endpoint proxying to `ca-server`. For example, if your endpoint is `/ca`, then the proper command is below:
+If you need to run `ca-server` behind a proxy, `--root-path` must be added to the command to start `ca-server` in the `docker-compose.yml` file. The root path should match the exact endpoint proxying to `ca-server`. For example, if your endpoint is `/ca`, then the proper command is below:
 
 ```bash
 # `docker-compose.yml` 
 command: [ "./start-poetry.sh", "poetry", "run", "uvicorn", "server.main:app", "--host", "0.0.0.0", "--port", "3000", "--root-path", "/ca" ]
 ```
 
-In addition, two endpoints to the nginx configuration file:
+In addition, add the two endpoints to your nginx configuration file:
 ```bash
 # Allow access to the docs of your ca-server
 location /ca/docs {
     proxy_pass http://ca-server:3000/docs;
 }
 
-# Allow access to the rest of your ca-server api
+# Allow access to the rest of your ca-server API
 location /ca/ {
     proxy_pass http://ca-server:3000/;
 }
