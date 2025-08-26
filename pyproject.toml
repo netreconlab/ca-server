@@ -23,7 +23,7 @@ bcrypt = "^4.3.0"
 cryptography = "^45.0.6"
 greenlet = "^3.2.3"
 pydantic = "^2.11.7"
-certifi = "2025.6.15"
+certifi = "2025.8.3"
 
 [tool.group.dev.dependencies]
 
