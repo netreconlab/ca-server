@@ -22,8 +22,6 @@ peewee = "^3.18.2"
 bcrypt = "^5.0.0"
 cryptography = "^46.0.2"
 greenlet = "^3.2.4"
-pydantic = "^2.12.0"
-certifi = "2025.8.3"
 
 [tool.group.dev.dependencies]
 
