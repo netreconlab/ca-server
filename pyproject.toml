@@ -20,7 +20,7 @@ fastapi-utils = "^0.8.0"
 python-dotenv = "^1.1.1"
 peewee = "^3.18.2"
 bcrypt = "^5.0.0"
-cryptography = "^46.0.2"
+cryptography = "^46.0.3"
 greenlet = "^3.2.4"
 
 [tool.group.dev.dependencies]
