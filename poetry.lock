@@ -707,13 +707,13 @@ files = [
 
 [[package]]
 name = "peewee"
-version = "3.18.2"
+version = "3.18.3"
 description = "a little orm"
 optional = false
 python-versions = "*"
 groups = ["main"]
 files = [
-    {file = "peewee-3.18.2.tar.gz", hash = "sha256:77a54263eb61aff2ea72f63d2eeb91b140c25c1884148e28e4c0f7c4f64996a0"},
+    {file = "peewee-3.18.3.tar.gz", hash = "sha256:62c3d93315b1a909360c4b43c3a573b47557a1ec7a4583a71286df2a28d4b72e"},
 ]
 
 [[package]]
@@ -1057,4 +1057,4 @@ standard = ["colorama (>=0.4) ; sys_platform == \"win32\"", "httptools (>=0.6.3)
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "a4aff279ec127663c0990926f22bdc76c62e02d91461d26d78a555074efe8271"
+content-hash = "a9427d03198c81116a5055785bf3aecc1df819b869158422edb4af0ec6b1e195"
