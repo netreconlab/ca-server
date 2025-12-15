@@ -21,7 +21,7 @@ python-dotenv = "^1.2.1"
 peewee = "^3.18.3"
 bcrypt = "^5.0.0"
 cryptography = "^46.0.3"
-greenlet = "^3.2.4"
+greenlet = "^3.3.0"
 
 [tool.group.dev.dependencies]
 
