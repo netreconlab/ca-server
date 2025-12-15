@@ -7,7 +7,7 @@ on:
     branches: [ main, '0.3.14' ]
 
 env:
-  LATEST: '0.3.14'
+  LATEST: '0.3.16'
   REGISTRY: docker.io
   IMAGE_NAME: ${{ github.repository }}
 
