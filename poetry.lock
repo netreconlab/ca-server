@@ -689,14 +689,20 @@ files = [
 
 [[package]]
 name = "peewee"
-version = "3.18.3"
+version = "3.19.0"
 description = "a little orm"
 optional = false
 python-versions = "*"
 groups = ["main"]
 files = [
-    {file = "peewee-3.18.3.tar.gz", hash = "sha256:62c3d93315b1a909360c4b43c3a573b47557a1ec7a4583a71286df2a28d4b72e"},
+    {file = "peewee-3.19.0-py3-none-any.whl", hash = "sha256:de220b94766e6008c466e00ce4ba5299b9a832117d9eb36d45d0062f3cfd7417"},
+    {file = "peewee-3.19.0.tar.gz", hash = "sha256:f88292a6f0d7b906cb26bca9c8599b8f4d8920ebd36124400d0cbaaaf915511f"},
 ]
+
+[package.extras]
+mysql = ["pymysql"]
+postgres = ["psycopg2-binary"]
+psycopg3 = ["psycopg[binary]"]
 
 [[package]]
 name = "psutil"
@@ -1039,4 +1045,4 @@ standard = ["colorama (>=0.4) ; sys_platform == \"win32\"", "httptools (>=0.6.3)
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "fdd089ceaf8128f6677173a76e8e41dcdb05641dcd0754322214ffac132328e4"
+content-hash = "0a2a453e1be4083159bb2d01b1afd2c41e39fe9eef16942f02f9c9ee1d9b3aeb"
