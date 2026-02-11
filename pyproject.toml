@@ -10,7 +10,7 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "^0.128.0"
+fastapi = "^0.128.5"
 jinja2 = "^3.1.6"
 uvicorn = "^0.40.0"
 python-multipart = "^0.0.22"
