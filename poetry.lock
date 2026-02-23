@@ -690,17 +690,21 @@ files = [
 
 [[package]]
 name = "peewee"
-version = "3.19.0"
+version = "4.0.0"
 description = "a little orm"
 optional = false
 python-versions = "*"
 groups = ["main"]
 files = [
-    {file = "peewee-3.19.0-py3-none-any.whl", hash = "sha256:de220b94766e6008c466e00ce4ba5299b9a832117d9eb36d45d0062f3cfd7417"},
-    {file = "peewee-3.19.0.tar.gz", hash = "sha256:f88292a6f0d7b906cb26bca9c8599b8f4d8920ebd36124400d0cbaaaf915511f"},
+    {file = "peewee-4.0.0-py3-none-any.whl", hash = "sha256:6de14ff11ab50c3152dc1d4e12628c1b28c1e03ff4e4213e463429bfcd7340b6"},
+    {file = "peewee-4.0.0.tar.gz", hash = "sha256:bc2722abf32a8074362c346fc8a95f2d34a9587873e81025b6429676c32044b6"},
 ]
 
 [package.extras]
+aiomysql = ["aiomysql", "greenlet"]
+aiosqlite = ["aiosqlite", "greenlet"]
+asyncpg = ["asyncpg", "greenlet"]
+cysqlite = ["cysqlite"]
 mysql = ["pymysql"]
 postgres = ["psycopg2-binary"]
 psycopg3 = ["psycopg[binary]"]
@@ -1046,4 +1050,4 @@ standard = ["colorama (>=0.4) ; sys_platform == \"win32\"", "httptools (>=0.6.3)
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "a35679608a21f647756c45c6d6912ed12d77eb9874d0e30c1d6399e38653d591"
+content-hash = "d5924901494e3f6c1cdcb84caf983c14aec6f588411b383c753d233c87d99bf4"
